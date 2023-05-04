@@ -1,19 +1,33 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/** 
+ * A class that contain methods that finds number of seats remaining on the entire train and the max capacity of the train as well
+ * as print all the passengers on the train
+ * @author Tajhini Brown
+ */
 
 public class Train {
+/**
+ * Contain methods that finds number of seats remaining on the entire train and the max capacity of the train as well
+ * as prints all the passengers on the train
+ * @param engine The type of engine the train (specific fuelType and fuelLevel)
+ * @param carsAttached: The number of cars attached on the train
+ */
 
-    private final Engine engine;
-    private ArrayList<Car> carsAttached;
-    
-    public Train(FuelType fuelType, double fuelCapacity, int nCars, int passengerCapacity){
-            this.engine = new Engine(fuelType, fuelCapacity);
-            this.carsAttached = new ArrayList<Car>(nCars);
-            for(int i = 0; i < nCars; i++) {
-            carsAttached.set(i, new Car(passengerCapacity));
-            }
+private final Engine engine;
+private ArrayList<Car> carsAttached;
+
+/** Constructor */ 
+public Train(FuelType fuelType, double fuelCapacity, int nCars, int passengerCapacity){
+    this.engine = new Engine(fuelType, fuelCapacity);
+    this.carsAttached = new ArrayList<Car>(nCars);
+    for(int i = 0; i < nCars; i++) {
+    carsAttached.set(i, new Car(passengerCapacity));
+    }
 }
+
+/** Accessors*/ 
 public Engine getEngine(){
     return this.engine;
 }
@@ -21,6 +35,10 @@ public Car getCar(int i){
     return this.carsAttached.get(i);
 }
 
+/**
+ * Gets the maximum capacity of the entire train
+ * @return sum: The total number of passsengers that can fit on the train
+ * */ 
 public int getMaxCapacity(){
     int[] maxCap= {};
     int carsAttached_range = this.carsAttached.size();
@@ -37,6 +55,10 @@ public int getMaxCapacity(){
       return sum;
 }
 
+/**
+ * Gets the number of seats remaining on the train
+ * @return sum  The total number of seats that are remaining on the train in all the Cars
+ * */ 
 public int seatsRemaining(){
     int[] seatCap= {};
     int carsAttached_range = carsAttached.size();
@@ -54,6 +76,9 @@ public int seatsRemaining(){
 
 }
 
+/**
+ * Prints the passengers that are on the train
+ */
 public void printManifest(){
     int carsAttached_range = carsAttached.size();
     for (int z = 0; z < carsAttached_range; ++z){
